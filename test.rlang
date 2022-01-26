@@ -1,0 +1,13 @@
+§text?: 'Woah, a test which will fail!'
+
+out; text
+
+? text == 'Woah, a test!': 
+out; 'Oyes!'
+$
+?& text == 'Woah, a test which will fail!':
+out; 'Are you sure about that?'
+$
+?x: 
+out; 'OnO'
+$
