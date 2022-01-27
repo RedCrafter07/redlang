@@ -18,6 +18,9 @@ $
     out; 'OnO'
 $
 
-&4 let num = 0; num <= 10; num++:
+out; ''
+
+out; 'Look, I can count to ten!'
+&4 num <= 10,, num++:
     out; num
 $
