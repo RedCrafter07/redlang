@@ -25,7 +25,7 @@ function handleCode(code: any) {
 	code = checkForLoops(code);
 	// return everything compiled as valid js.
 	code = arrayToString(code, !config.noLines);
-	return code;
+	return { code, config };
 }
 
 export default handleCode;
