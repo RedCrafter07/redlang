@@ -17,3 +17,7 @@ $
 ?x: 
     out; 'OnO'
 $
+
+&4 let num = 0; num <= 10; num++:
+    out; num
+$
