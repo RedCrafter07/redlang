@@ -1,5 +1,5 @@
 %comp%
-noLines: true
+    noLines: true
 %comp%
 
 §text?: 'Woah, a test which will fail!'
@@ -9,11 +9,11 @@ noLines: true
 out; text
 
 ? text == 'Woah, a test!': 
-out; 'Oyes!'
+    out; 'Oyes!'
 $
 ?& text == 'Woah, a test which will fail!':
-out; 'Are you sure about that?'
+    out; 'Are you sure about that?'
 $
 ?x: 
-out; 'OnO'
+    out; 'OnO'
 $
