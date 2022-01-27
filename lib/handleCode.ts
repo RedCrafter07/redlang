@@ -1,14 +1,27 @@
 import checkForLog from './checkers/log';
 import checkForVariables from './checkers/variables';
 import checkForStatements from './checkers/statements';
+import getSplittedLines from './getters/getSplittedLines';
+import arrayToString from './utils/arrayToString';
+import getCompilerConfig from './getters/getCompilerConfig';
 
-function handleCode(code: string) {
+function handleCode(code: any) {
 	code = code.replace(/\r\n/g, '\n');
+	// parse lines
+	code = getSplittedLines(code);
+	// get config
+	let res = getCompilerConfig(code);
+	let config = res.config;
+	if (!config.noLines) config.noLines = false;
+	code = res.code;
+	// check variables
 	code = checkForVariables(code);
-	// console.log(code);
+	// Check out;-s
 	code = checkForLog(code);
-	// console.log(code);
+	// Check statements
 	code = checkForStatements(code);
+	// return everything compiled as valid js.
+	code = arrayToString(code, !config.noLines);
 	return code;
 }
 
