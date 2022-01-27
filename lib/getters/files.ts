@@ -6,8 +6,8 @@ function checkForFiles(directory: string) {
 		if (file.endsWith('.rlang')) {
 			let code = fs.readFileSync(directory + '/' + file, 'utf8');
 			// handling the code
-			let js = handleCode(code);
-			eval(js);
+			let out = handleCode(code);
+			eval(out.code);
 		}
 	});
 }
