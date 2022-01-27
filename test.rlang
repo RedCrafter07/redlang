@@ -1,4 +1,10 @@
+%comp%
+noLines: true
+%comp%
+
 §text?: 'Woah, a test which will fail!'
+
+#out; 'Commented out log!'
 
 out; text
 
