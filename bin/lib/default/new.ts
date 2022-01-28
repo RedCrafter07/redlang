@@ -76,7 +76,7 @@ export default async function createNewProject() {
 	spinner = createSpinner(`Creating package.json...`);
 
 	try {
-		execSync(`npm init -y`, { cwd: `${cwd()}\\..\\${answers.name}` });
+		execSync(`npm init -y`, { cwd: `${cwd()}\\${answers.name}` });
 	} catch (e) {
 		spinner.error({
 			text: 'Failed to create package.json!'
@@ -95,13 +95,13 @@ export default async function createNewProject() {
 	spinner = createSpinner('Updating package.json information...');
 	spinner.start();
 
-	let json = await JSON.parse(fs.readFileSync(`${cwd()}\\..\\${answers.name}\\package.json`, 'utf8'));
+	let json = await JSON.parse(fs.readFileSync(`${cwd()}\\${answers.name}\\package.json`, 'utf8'));
 
 	json.description = answers.desc;
 	json.author = answers.author;
 
 	try {
-		fs.writeFileSync(`${cwd()}\\..\\${answers.name}\\package.json`, JSON.stringify(json, null, 2));
+		fs.writeFileSync(`${cwd()}\\${answers.name}\\package.json`, JSON.stringify(json, null, 2));
 	} catch (e) {
 		spinner.error({
 			text: 'Failed to update package.json!'
@@ -122,7 +122,7 @@ export default async function createNewProject() {
 		spinner.start();
 
 		try {
-			execSync(`npm install ${answers.packages}`, { cwd: `${cwd()}\\..\\${answers.name}` });
+			execSync(`npm install ${answers.packages}`, { cwd: `${cwd()}\\${answers.name}` });
 		} catch (e) {
 			spinner.error({
 				text: 'Failed to install packages!'
@@ -142,7 +142,7 @@ export default async function createNewProject() {
 	spinner = createSpinner('Creating index.rlang...');
 	spinner.start();
 
-	fs.writeFileSync(`${cwd()}\\..\\${answers.name}\\index.rlang`, 'out; "Hello World!"');
+	fs.writeFileSync(`${cwd()}\\${answers.name}\\index.rlang`, 'out; "Hello World!"');
 
 	spinner.success({
 		text: 'Created index.rlang!'
@@ -153,7 +153,7 @@ export default async function createNewProject() {
 		spinner.start();
 
 		try {
-			execSync(`code ${cwd()}\\..\\${answers.name}`);
+			execSync(`code ${cwd()}\\${answers.name}`);
 		} catch (e) {}
 
 		spinner.success({
