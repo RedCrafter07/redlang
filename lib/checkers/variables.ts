@@ -1,8 +1,8 @@
 export default checkForVariables;
 
+import { addHandledLine } from '../getters/handledLines';
 import getVariableFromString from '../getters/variableFromString';
 import variableToOutput from '../outputs/variableToOutput';
-import arrayToString from '../utils/arrayToString';
 
 function checkForVariables(lines: Array<string>) {
 	lines.forEach((line, index) => {
@@ -13,6 +13,8 @@ function checkForVariables(lines: Array<string>) {
 				let variableString = variableToOutput({ name, constant, value });
 
 				lines[index] = variableString;
+
+				addHandledLine(index);
 			}
 
 			// if (variables.includes(variable)) {

@@ -1,5 +1,5 @@
-import arrayToString from '../utils/arrayToString';
 import getFunctionParameters from '../getters/functionParameters';
+import { addHandledLine } from '../getters/handledLines';
 
 function checkForLog(lines: Array<string>) {
 	lines.forEach((line, index) => {
@@ -13,6 +13,8 @@ function checkForLog(lines: Array<string>) {
 				} else {
 					lines[index] = `console.log();`;
 				}
+
+				addHandledLine(index);
 			}
 		}
 	});
