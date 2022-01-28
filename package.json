@@ -4,11 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"start": "tsc && node .",
 		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"fs": "^0.0.1-security"
 	},
