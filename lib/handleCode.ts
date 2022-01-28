@@ -5,26 +5,29 @@ import getSplittedLines from './getters/getSplittedLines';
 import arrayToString from './utils/arrayToString';
 import getCompilerConfig from './getters/getCompilerConfig';
 import checkForLoops from './checkers/loops';
+import filterUnhandledLines from './utils/filterUnhandledLines';
 
-function handleCode(code: any) {
+async function handleCode(code: any) {
 	code = code.replace(/\r\n/g, '\n');
 	// parse lines
-	code = getSplittedLines(code);
+	code = await getSplittedLines(code);
 	// get config
-	let res = getCompilerConfig(code);
+	let res = await getCompilerConfig(code);
 	let config = res.config;
 	if (!config.noLines) config.noLines = false;
 	code = res.code;
 	// check variables
-	code = checkForVariables(code);
+	code = await checkForVariables(code);
 	// Check out;-s
-	code = checkForLog(code);
+	code = await checkForLog(code);
 	// Check statements
-	code = checkForStatements(code);
+	code = await checkForStatements(code);
 	// Check loops
-	code = checkForLoops(code);
-	// return everything compiled as valid js.
-	code = arrayToString(code, !config.noLines);
+	code = await checkForLoops(code);
+	// filter unhandled lines
+	code = await filterUnhandledLines(code);
+	// make string from array of lines and check for config.noLines
+	code = await arrayToString(code, !config.noLines);
 	return { code, config };
 }
 

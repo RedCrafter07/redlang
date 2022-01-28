@@ -1,13 +1,14 @@
 import handleCode from '../handleCode';
 import fs from 'fs';
 
-function checkForFiles(directory: string) {
-	fs.readdirSync(directory).forEach(file => {
+async function checkForFiles(directory: string) {
+	fs.readdirSync(directory).forEach(async file => {
 		if (file.endsWith('.rlang')) {
-			let code = fs.readFileSync(directory + '/' + file, 'utf8');
+			let code = fs.readFileSync(`${directory}/${file}`, 'utf8');
 			// handling the code
-			let out = handleCode(code);
-			eval(out.code);
+			let out = await handleCode(code);
+			//
+			let jsFile = fs.writeFileSync(`${directory}/${file}.js`, out.code, 'utf8');
 		}
 	});
 }
