@@ -1,5 +1,5 @@
 %comp%
-    noLines: true
+    noLines: false
 %comp%
 
 §text?: 'Woah, a test which will fail!'
@@ -24,3 +24,5 @@ out; 'Look, I can count to ten!'
 &4 num <= 10,, num++:
     out; num
 $
+
+console.log("Hi!")
