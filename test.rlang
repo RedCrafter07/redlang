@@ -2,6 +2,8 @@
     noLines: false
 %comp%
 
+chalk -> "chalk"
+
 §text?: 'Woah, a test which will fail!'
 
 #out; 'Commented out log!'
@@ -25,4 +27,4 @@ out; 'Look, I can count to ten!'
     out; num
 $
 
-console.log("Hi!")
+out; chalk.green("TEST123")
